@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+<h1>Manajemen Mahasiswa</h1>
+<table class="table">
+  <thead><tr><th>NIM</th><th>Nama</th><th>Program Studi</th><th></th></tr></thead>
+  <tbody>
+  <% students.forEach(function(s) { %>
+    <tr>
+      <td><%= s.nim %></td>
+      <td><%= s.full_name %></td>
+      <td><%= s.program_studi %></td>
+      <td>
+        <form action="/students/<%= s.id %>/delete" method="post" style="display:inline">
+          <button type="submit">Hapus</button>
+        </form>
+      </td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>
+<h2>Tambah Mahasiswa</h2>
+<form action="/students" method="post" class="card">
+  <label>NIM<input type="text" name="nim" required></label>
+  <label>Nama Lengkap<input type="text" name="full_name" required></label>
+  <label>Program Studi<input type="text" name="program_studi" required></label>
+  <button type="submit">Simpan</button>
+</form>
+<%- include('../partials/footer') %>

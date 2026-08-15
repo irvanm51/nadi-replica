@@ -1,0 +1,12 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1a1a; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: #1e293b; color: white; }
+.navbar a { color: white; margin-right: 12px; text-decoration: none; }
+.navbar .brand { font-weight: bold; font-size: 1.2rem; }
+.container { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.table { width: 100%; border-collapse: collapse; margin-bottom: 24px; background: white; }
+.table th, .table td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+.card { background: white; padding: 16px; border-radius: 6px; display: flex; flex-direction: column; gap: 12px; max-width: 400px; }
+.card label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; }
+.card input, .card select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+button { padding: 8px 12px; border: none; border-radius: 4px; background: #2563eb; color: white; cursor: pointer; }
+.error { color: #b91c1c; font-weight: bold; }

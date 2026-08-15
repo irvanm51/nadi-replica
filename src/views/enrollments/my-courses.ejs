@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<h1>Mata Kuliah yang Saya Ampu</h1>
+<% if (!hasProfile) { %>
+  <p class="error">Profil dosen belum terhubung ke akun ini. Hubungi staf akademik.</p>
+<% } %>
+<ul>
+  <% courses.forEach(function(c) { %>
+    <li><%= c.code %> - <%= c.name %></li>
+  <% }); %>
+</ul>
+<h2>Peserta &amp; Input Nilai</h2>
+<table class="table">
+  <thead><tr><th>Kode</th><th>NIM</th><th>Nama</th><th>Nilai</th></tr></thead>
+  <tbody>
+  <% participants.forEach(function(p) { %>
+    <tr>
+      <td><%= p.code %></td>
+      <td><%= p.nim %></td>
+      <td><%= p.full_name %></td>
+      <td>
+        <form action="/grades/<%= p.enrollment_id %>" method="post" style="display:flex;gap:4px">
+          <input type="number" step="0.01" name="score" min="0" max="100" placeholder="Skor" required>
+          <input type="text" name="letter_grade" placeholder="A/B/C" maxlength="2" required>
+          <button type="submit">Simpan</button>
+        </form>
+      </td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>

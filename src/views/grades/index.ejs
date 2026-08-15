@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+<h1>Nilai Saya</h1>
+<table class="table">
+  <thead><tr><th>Kode</th><th>Mata Kuliah</th><th>Skor</th><th>Huruf</th></tr></thead>
+  <tbody>
+  <% grades.forEach(function(g) { %>
+    <tr>
+      <td><%= g.code %></td>
+      <td><%= g.name %></td>
+      <td><%= g.score !== null ? g.score : '-' %></td>
+      <td><%= g.letter_grade || '-' %></td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>

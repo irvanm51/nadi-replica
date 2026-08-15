@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<h1>Mata Kuliah</h1>
+<table class="table">
+  <thead><tr><th>Kode</th><th>Nama</th><th>SKS</th><th>Dosen Pengampu</th></tr></thead>
+  <tbody>
+  <% courses.forEach(function(c) { %>
+    <tr>
+      <td><%= c.code %></td>
+      <td><%= c.name %></td>
+      <td><%= c.sks %></td>
+      <td><%= c.lecturer_name || '-' %></td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>
+<% if (role === 'staf-akademik') { %>
+  <h2>Tambah Mata Kuliah</h2>
+  <form action="/courses" method="post" class="card">
+    <label>Kode<input type="text" name="code" required></label>
+    <label>Nama<input type="text" name="name" required></label>
+    <label>SKS<input type="number" name="sks" min="1" max="6" required></label>
+    <label>Dosen Pengampu
+      <select name="lecturer_id">
+        <option value="">-</option>
+        <% lecturers.forEach(function(l) { %>
+          <option value="<%= l.id %>"><%= l.full_name %></option>
+        <% }); %>
+      </select>
+    </label>
+    <button type="submit">Simpan</button>
+  </form>
+<% } %>
+<%- include('../partials/footer') %>

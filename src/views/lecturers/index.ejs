@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<h1>Manajemen Dosen</h1>
+<table class="table">
+  <thead><tr><th>NIDN</th><th>Nama</th></tr></thead>
+  <tbody>
+  <% lecturers.forEach(function(l) { %>
+    <tr><td><%= l.nidn %></td><td><%= l.full_name %></td></tr>
+  <% }); %>
+  </tbody>
+</table>
+<h2>Tambah Dosen</h2>
+<form action="/lecturers" method="post" class="card">
+  <label>NIDN<input type="text" name="nidn" required></label>
+  <label>Nama Lengkap<input type="text" name="full_name" required></label>
+  <button type="submit">Simpan</button>
+</form>
+<%- include('../partials/footer') %>

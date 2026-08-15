@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>NADI - Sistem Akademik Kampus</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <span class="brand">NADI</span>
+  <% if (typeof user !== 'undefined' && user) { %>
+    <span class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <% if (user.role === 'staf-akademik') { %>
+        <a href="/students">Mahasiswa</a>
+        <a href="/lecturers">Dosen</a>
+        <a href="/courses">Mata Kuliah</a>
+      <% } else if (user.role === 'dosen') { %>
+        <a href="/my-courses">Mata Kuliah Saya</a>
+      <% } else if (user.role === 'mahasiswa') { %>
+        <a href="/enrollments">KRS</a>
+        <a href="/courses">Mata Kuliah</a>
+        <a href="/grades">Nilai</a>
+      <% } %>
+      <form action="/logout" method="post" style="display:inline">
+        <button type="submit">Logout (<%= user.username %>)</button>
+      </form>
+    </span>
+  <% } %>
+</nav>
+<main class="container">

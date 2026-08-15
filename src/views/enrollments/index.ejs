@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<h1>KRS Saya</h1>
+<% if (!hasProfile) { %>
+  <p class="error">Profil mahasiswa belum terhubung ke akun ini. Hubungi staf akademik.</p>
+<% } %>
+<table class="table">
+  <thead><tr><th>Kode</th><th>Nama Mata Kuliah</th></tr></thead>
+  <tbody>
+  <% enrolled.forEach(function(e) { %>
+    <tr><td><%= e.code %></td><td><%= e.name %></td></tr>
+  <% }); %>
+  </tbody>
+</table>
+<h2>Ambil Mata Kuliah</h2>
+<form action="/enrollments" method="post" class="card">
+  <label>Mata Kuliah
+    <select name="course_id" required>
+      <% courses.forEach(function(c) { %>
+        <option value="<%= c.id %>"><%= c.code %> - <%= c.name %></option>
+      <% }); %>
+    </select>
+  </label>
+  <label>Semester<input type="text" name="semester" placeholder="Ganjil 2026/2027" required></label>
+  <button type="submit">Ambil</button>
+</form>
+<%- include('../partials/footer') %>

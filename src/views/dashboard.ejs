@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+<h1>Dashboard</h1>
+<p>Selamat datang, <strong><%= user.username %></strong> (<%= user.role %>)</p>
+<% if (user.role === 'staf-akademik') { %>
+  <p>Kelola data <a href="/students">mahasiswa</a>, <a href="/lecturers">dosen</a>, dan <a href="/courses">mata kuliah</a>.</p>
+<% } else if (user.role === 'dosen') { %>
+  <p>Lihat <a href="/my-courses">mata kuliah yang Anda ampu</a> dan input nilai peserta.</p>
+<% } else if (user.role === 'mahasiswa') { %>
+  <p>Isi <a href="/enrollments">KRS</a> dan lihat <a href="/grades">nilai</a> Anda.</p>
+<% } %>
+<%- include('partials/footer') %>
